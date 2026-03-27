@@ -1,0 +1,144 @@
+﻿
+Step 1: Neutrosophic Decision Matrix (T,I,F)
+                  Effectiveness  ... Patient Satisfaction
+Treatment A     [0.8, 0.1, 0.1]  ...    [0.9, 0.05, 0.05]
+Treatment B   [0.9, 0.05, 0.05]  ...    [0.85, 0.1, 0.05]
+Treatment C  [0.95, 0.02, 0.03]  ...   [0.95, 0.02, 0.03]
+
+[3 rows x 5 columns]
+
+Single-run IWNS (benefit, non-negative) and TOPSIS RC
+             IWNS (0û1)
+Treatment A    0.444587
+Treatment B    0.613172
+Treatment C    0.668352
+             RC (0û1)
+Treatment A  0.056204
+Treatment B  0.695944
+Treatment C  0.997328
+
+Sensitivity (TOPSIS RC across weight sets)
+Alternative  Treatment A  Treatment B  Treatment C
+Config                                            
+1               0.072982     0.712252     0.996475
+2               0.056828     0.775547     0.997297
+3               0.036150     0.610579     0.998314
+4               0.070239     0.722791     0.996616
+5               0.113907     0.693905     0.994283
+
+Monte Carlo ù TOPSIS RC summaries (full pipeline)
+              RC_mean    RC_std  Rank1_freq
+Treatment A  0.035731  0.037810       0.000
+Treatment B  0.705333  0.115146       0.003
+Treatment C  0.994217  0.009752       0.997
+
+=== Comparison A: Single NDM (no fusion) ===
+             Crisp TOPSIS  ...  Proposed Method
+Treatment A        0.1952  ...           0.1742
+Treatment B        0.5129  ...           0.5722
+Treatment C        1.0000  ...           1.0000
+
+[3 rows x 5 columns]
+
+Ranks (1=best):
+             Crisp TOPSIS  ...  Proposed Method
+Treatment A             3  ...                3
+Treatment B             2  ...                2
+Treatment C             1  ...                1
+
+[3 rows x 5 columns]
+
+=== Comparison B: Multi-expert (baselines: mean; proposed: DST) ===
+             Crisp TOPSIS  ...  Proposed Method
+Treatment A        0.2387  ...           0.0562
+Treatment B        0.5270  ...           0.6959
+Treatment C        1.0000  ...           0.9973
+
+[3 rows x 5 columns]
+
+Ranks (1=best):
+             Crisp TOPSIS  ...  Proposed Method
+Treatment A             3  ...                3
+Treatment B             2  ...                2
+Treatment C             1  ...                1
+
+[3 rows x 5 columns]
+df_ndm:
+                  Effectiveness Side Effects (Tolerability)  \
+Treatment A     [0.8, 0.1, 0.1]             [0.6, 0.2, 0.2]   
+Treatment B   [0.9, 0.05, 0.05]             [0.8, 0.1, 0.1]   
+Treatment C  [0.95, 0.02, 0.03]           [0.9, 0.05, 0.05]   
+
+                 Affordability      Recovery Time Patient Satisfaction  
+Treatment A    [0.5, 0.3, 0.2]    [0.7, 0.2, 0.1]    [0.9, 0.05, 0.05]  
+Treatment B    [0.6, 0.2, 0.2]  [0.85, 0.1, 0.05]    [0.85, 0.1, 0.05]  
+Treatment C  [0.7, 0.15, 0.15]  [0.9, 0.05, 0.05]   [0.95, 0.02, 0.03]  
+
+df_ivfs:
+                                                                                      Effectiveness  \
+Treatment A  [(0.75, 0.8500000000000001), (0.05, 0.15000000000000002), (0.05, 0.15000000000000002)]   
+Treatment B                                    [(0.85, 0.9500000000000001), (0.0, 0.1), (0.0, 0.1)]   
+Treatment C                                   [(0.8999999999999999, 1.0), (0.0, 0.07), (0.0, 0.08)]   
+
+                                                                        Side Effects (Tolerability)  \
+Treatment A  [(0.5499999999999999, 0.65), (0.15000000000000002, 0.25), (0.15000000000000002, 0.25)]   
+Treatment B  [(0.75, 0.8500000000000001), (0.05, 0.15000000000000002), (0.05, 0.15000000000000002)]   
+Treatment C                                    [(0.85, 0.9500000000000001), (0.0, 0.1), (0.0, 0.1)]   
+
+                                                                                      Affordability  \
+Treatment A                               [(0.45, 0.55), (0.25, 0.35), (0.15000000000000002, 0.25)]   
+Treatment B  [(0.5499999999999999, 0.65), (0.15000000000000002, 0.25), (0.15000000000000002, 0.25)]   
+Treatment C    [(0.6499999999999999, 0.75), (0.09999999999999999, 0.2), (0.09999999999999999, 0.2)]   
+
+                                                                                      Recovery Time  \
+Treatment A  [(0.6499999999999999, 0.75), (0.15000000000000002, 0.25), (0.05, 0.15000000000000002)]   
+Treatment B                    [(0.7999999999999999, 0.9), (0.05, 0.15000000000000002), (0.0, 0.1)]   
+Treatment C                                    [(0.85, 0.9500000000000001), (0.0, 0.1), (0.0, 0.1)]   
+
+                                                             Patient Satisfaction  
+Treatment A                  [(0.85, 0.9500000000000001), (0.0, 0.1), (0.0, 0.1)]  
+Treatment B  [(0.7999999999999999, 0.9), (0.05, 0.15000000000000002), (0.0, 0.1)]  
+Treatment C                 [(0.8999999999999999, 1.0), (0.0, 0.07), (0.0, 0.08)]  
+
+df_dst: Representing Truth values Lower and upper bounds after DST aggretaion for each alternatives
+                         Effectiveness  \
+Treatment A  (0.9309863933365703, 1.0)   
+Treatment B  (0.9488473324538339, 1.0)   
+Treatment C  (0.9497969366267083, 1.0)   
+
+                          Side Effects (Tolerability)  \
+Treatment A  (0.8245549167508396, 0.9245549167508397)   
+Treatment B                 (0.9376091810561024, 1.0)   
+Treatment C                 (0.9484106991679049, 1.0)   
+
+                                        Affordability  \
+Treatment A  (0.7590166951475839, 0.8590166951475839)   
+Treatment B  (0.8382435666230543, 0.9382435666230544)   
+Treatment C                 (0.9084806678373691, 1.0)   
+
+                         Recovery Time       Patient Satisfaction  
+Treatment A  (0.9025206415346904, 1.0)  (0.9496849979988832, 1.0)  
+Treatment B  (0.9453791526932455, 1.0)  (0.9436164697159037, 1.0)  
+Treatment C  (0.9485770840909646, 1.0)  (0.9494386261605415, 1.0)  
+
+df_norm:Representing Normalized Truth values Lower and upper bounds after Normalization of DTS aggreated values
+                          Effectiveness Side Effects (Tolerability)  \
+Treatment A                  (0.0, 1.0)   (0.0, 0.5699789253027051)   
+Treatment B  (0.25880315463541936, 1.0)    (0.644385480696016, 1.0)   
+Treatment C   (0.2725628205735505, 1.0)    (0.705951857546045, 1.0)   
+
+                                        Affordability  \
+Treatment A                 (0.0, 0.4149665059214058)   
+Treatment B  (0.3287649803126025, 0.7437314862340083)   
+Treatment C                 (0.6202254250821256, 1.0)   
+
+                         Recovery Time        Patient Satisfaction  
+Treatment A                 (0.0, 1.0)  (0.10762944874863832, 1.0)  
+Treatment B  (0.4396675545808739, 1.0)                  (0.0, 1.0)  
+Treatment C  (0.4724737963131401, 1.0)  (0.10325987775689192, 1.0)  
+
+df_iwns:
+                 IWNS
+Treatment A  0.444587
+Treatment B  0.613172
+Treatment C  0.668352
