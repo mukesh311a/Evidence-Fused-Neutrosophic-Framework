@@ -75,9 +75,44 @@ def fancy_3d(ax, draw_bbox=True, elev=22, azim=28):
         segs = [(corners[a], corners[b]) for a,b in edges]
         ax.add_collection3d(Line3DCollection(segs, colors='black', linewidths=1.2))
 
+RESULTS_DIR = "results"
+OUTPUTS_DIR = "outputs"
+os.makedirs(RESULTS_DIR, exist_ok=True)
+os.makedirs(OUTPUTS_DIR, exist_ok=True)
+
+_text_log = []
+_original_print = print
+_original_display = display
+
+
+def print(*args, **kwargs):
+    sep = kwargs.get("sep", " ")
+    end = kwargs.get("end", "\n")
+    msg = sep.join(str(a) for a in args) + end
+    _text_log.append(msg)
+    _original_print(*args, **kwargs)
+
+
+def display(obj):
+    try:
+        if isinstance(obj, (pd.DataFrame, pd.Series)):
+            _text_log.append(obj.to_string() + "\n")
+        else:
+            _text_log.append(str(obj) + "\n")
+    except Exception:
+        pass
+    return _original_display(obj)
+
+
 def save_figure(fig, name):
-    # Keep the existing call sites unchanged, but avoid any file writes.
-    print(f"[display-only mode] Figure prepared: {name} (not saved to disk)")
+    for fmt in ("png", "pdf"):
+        fig.savefig(os.path.join(RESULTS_DIR, f"{name}.{fmt}"), bbox_inches="tight", dpi=300)
+
+
+def write_text_outputs(path=os.path.join(OUTPUTS_DIR, "run_output.txt")):
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("".join(_text_log))
+    _original_print(f"Text output saved to: {path}")
 
 
 alternatives = ["Treatment A", "Treatment B", "Treatment C"]
@@ -849,3 +884,5 @@ leg.get_title().set_fontfamily(cam_font)
 plt.tight_layout()
 save_figure(fig, "Fig_3D_Rank_Frequencies")
 plt.show()
+
+write_text_outputs()
