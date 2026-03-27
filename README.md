@@ -12,6 +12,6 @@ The framework performs uncertainty-aware treatment ranking for healthcare decisi
 
 ## Repository Contents
 
-- `Downloads/Neutrosopic.ipynb`: Main implementation and analysis workflow.
+- Code_Evidence-Fused Neutrosophic Framework.pyb`: Main implementation and analysis workflow.
 - `results/`: Generated plots and figures (PNG/PDF).
 - `outputs/`: Text outputs from execution, including Monte Carlo summaries and tabulated results.
