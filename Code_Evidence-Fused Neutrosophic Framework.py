@@ -10,8 +10,8 @@ from matplotlib.patches import Patch
 import matplotlib.font_manager as fm
 import os
 
-# --- 1. THE FONT SETUP ---
-# This checks if you uploaded the font successfully
+
+
 if os.path.exists('cambria.ttc'):
     fm.fontManager.addfont('cambria.ttc')
     cam_font = 'Cambria'
@@ -19,7 +19,7 @@ elif os.path.exists('cambria.ttf'):
     fm.fontManager.addfont('cambria.ttf')
     cam_font = 'Cambria'
 else:
-    print("⚠️ WAIT: I cannot find the Cambria font file.")
+    print("cannot find the Cambria font file.")
     print("Please make sure you uploaded 'cambria.ttc' or 'cambria.ttf' to the folder icon on the left!")
     cam_font = 'serif'
 
