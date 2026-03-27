@@ -11,7 +11,6 @@ import matplotlib.font_manager as fm
 import os
 
 
-
 if os.path.exists('cambria.ttc'):
     fm.fontManager.addfont('cambria.ttc')
     cam_font = 'Cambria'
@@ -19,11 +18,11 @@ elif os.path.exists('cambria.ttf'):
     fm.fontManager.addfont('cambria.ttf')
     cam_font = 'Cambria'
 else:
-    print("cannot find the Cambria font file.")
+    print("I cannot find the Cambria font file.")
     print("Please make sure you uploaded 'cambria.ttc' or 'cambria.ttf' to the folder icon on the left!")
     cam_font = 'serif'
 
-# Enforce Cambria globally for all text
+
 plt.rcParams.update({
     "font.family": cam_font,
     "text.color": "#000000",
@@ -80,9 +79,12 @@ OUTPUTS_DIR = "outputs"
 os.makedirs(RESULTS_DIR, exist_ok=True)
 os.makedirs(OUTPUTS_DIR, exist_ok=True)
 
+import builtins
+from IPython.display import display as _ipy_display
+
 _text_log = []
-_original_print = print
-_original_display = display
+_original_print = builtins.print
+_original_display = _ipy_display
 
 
 def print(*args, **kwargs):
