@@ -22,7 +22,7 @@ The framework performs uncertainty-aware treatment ranking for healthcare decisi
 ### 1) Clone the repository
 
 ```bash
-git clones https://github.com/mukesh311a/Evidence-Fused-Neutrosophic-Framework.git
+git clone https://github.com/mukesh311a/Evidence-Fused-Neutrosophic-Framework.git
 cd Evidence-Fused-Neutrosophic-Framework
 ```
 
